@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/coverImageView"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
+        android:layout_width="@dimen/books_cover_image_size"
+        android:layout_height="@dimen/books_cover_image_size"
         android:scaleType="centerCrop" />
 
     <LinearLayout
@@ -23,6 +23,7 @@
             android:id="@+id/titleTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            style="@style/BookTitle"
             tools:text="A very good title" />
 
         <TextView
