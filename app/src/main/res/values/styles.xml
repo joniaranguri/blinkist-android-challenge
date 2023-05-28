@@ -6,14 +6,23 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowBackground">@color/colorPrimaryDark</item>
         <item name="android:textColor">@color/colorText</item>
+        <item name="android:textSize">@dimen/default_text_size</item>
         <item name="android:fontFamily">@font/cerapro_regular</item>
     </style>
 
-    <style name="BookTitle" parent="android:Widget.TextView">
+    <style name="Title" parent="android:Widget.TextView">
         <item name="android:fontFamily">@font/cerapro_bold</item>
-        <item name="android:textSize">@dimen/book_title_size</item>
         <item name="android:ellipsize">end</item>
         <item name="android:maxLines">2</item>
     </style>
+
+    <style name="BookTitle" parent="Title">
+        <item name="android:textSize">@dimen/book_title_size</item>
+    </style>
+
+    <style name="SectionTitle" parent="Title">
+        <item name="android:textSize">@dimen/section_title_size</item>
+    </style>
+
 
 </resources>
