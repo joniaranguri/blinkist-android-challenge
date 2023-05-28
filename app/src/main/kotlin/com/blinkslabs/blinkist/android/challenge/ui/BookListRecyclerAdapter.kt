@@ -10,9 +10,8 @@ import com.blinkslabs.blinkist.android.challenge.R
 import com.blinkslabs.blinkist.android.challenge.data.model.Book
 import com.squareup.picasso.Picasso
 
-class BookListRecyclerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-
-    private val items = ArrayList<Book>()
+class BookListRecyclerAdapter(private val items: List<Book>) :
+    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.book_list_item, parent, false)
@@ -32,11 +31,6 @@ class BookListRecyclerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() 
     }
 
     override fun getItemCount() = items.size
-
-    fun setItems(items: List<Book>) {
-        this.items.clear()
-        this.items.addAll(items)
-    }
 
     private class BookViewHolder(v: View) : RecyclerView.ViewHolder(v) {
         var authorTextView: TextView = v.findViewById(R.id.authorTextView)
