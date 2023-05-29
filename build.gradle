@@ -6,8 +6,11 @@ buildscript {
     ext.swiperefreshlayout_version = '1.1.0'
     ext.lifecycle_version = '2.6.1'
     ext.dagger_version = '2.45'
+    ext.moshi_kotlin_version = "1.14.0"
+    ext.moshi_converter_version = "2.3.0"
     ext.rxjava_version = '2.2.21'
     ext.rxandroid_version = '2.1.1'
+    ext.room_version = "2.5.0"
     ext.picasso_version = '2.71828'
     ext.threeten_version = '1.2.2'
     ext.timber_version = '5.0.1'
