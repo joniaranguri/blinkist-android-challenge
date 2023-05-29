@@ -1,6 +1,6 @@
 package com.blinkslabs.blinkist.android.challenge.data
 
-import com.blinkslabs.blinkist.android.challenge.data.api.BooksApi
+import com.blinkslabs.blinkist.android.challenge.data.source.api.BooksApi
 import com.blinkslabs.blinkist.android.challenge.data.model.Book
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
@@ -21,7 +21,7 @@ class BooksServiceShould {
     lateinit var booksApi: BooksApi
 
     @InjectMocks
-    lateinit var booksService: BooksService
+    lateinit var booksService: BooksRepository
 
     private val mockBooks: List<Book> = listOf(mock(), mock(), mock())
 

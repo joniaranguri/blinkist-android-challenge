@@ -1,8 +1,8 @@
 package com.blinkslabs.blinkist.android.challenge
 
 import android.app.Application
-import com.blinkslabs.blinkist.android.challenge.di.ApplicationComponent
-import com.blinkslabs.blinkist.android.challenge.di.DaggerApplicationComponent
+import com.blinkslabs.blinkist.android.challenge.di.component.DaggerApplicationComponent
+import com.blinkslabs.blinkist.android.challenge.di.component.ApplicationComponent
 import com.jakewharton.threetenabp.AndroidThreeTen
 import timber.log.Timber
 
