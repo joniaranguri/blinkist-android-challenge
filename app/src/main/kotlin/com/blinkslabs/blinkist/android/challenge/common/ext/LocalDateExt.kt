@@ -1,4 +1,4 @@
-package com.blinkslabs.blinkist.android.challenge.common
+package com.blinkslabs.blinkist.android.challenge.common.ext
 
 import org.threeten.bp.LocalDate
 import org.threeten.bp.format.TextStyle

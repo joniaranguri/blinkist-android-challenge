@@ -3,7 +3,6 @@ package com.blinkslabs.blinkist.android.challenge.ui
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -35,12 +34,12 @@ class BooksActivity : AppCompatActivity() {
         recyclerAdapter = BookSectionsRecyclerAdapter()
         recyclerView.adapter = recyclerAdapter
 
-        swipeRefreshLayout.setOnRefreshListener { viewModel.fetchBooks() }
+        swipeRefreshLayout.setOnRefreshListener { viewModel.refreshBooks() }
 
-        viewModel.books().observe(this, Observer { books ->
+        viewModel.books().observe(this) { books ->
             showBooks(books)
             hideLoading()
-        })
+        }
 
         showLoading()
         viewModel.fetchBooks()

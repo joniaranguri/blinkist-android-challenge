@@ -2,7 +2,7 @@ package com.blinkslabs.blinkist.android.challenge.ui
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.blinkslabs.blinkist.android.challenge.CoroutinesTestRule
-import com.blinkslabs.blinkist.android.challenge.data.BooksService
+import com.blinkslabs.blinkist.android.challenge.data.BooksRepository
 import com.blinkslabs.blinkist.android.challenge.data.model.Book
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
@@ -29,7 +29,7 @@ class BooksViewModelShould {
     val coroutinesRule = CoroutinesTestRule()
 
     @Mock
-    lateinit var booksService: BooksService
+    lateinit var booksService: BooksRepository
 
     @InjectMocks
     lateinit var viewModel: BooksViewModel
