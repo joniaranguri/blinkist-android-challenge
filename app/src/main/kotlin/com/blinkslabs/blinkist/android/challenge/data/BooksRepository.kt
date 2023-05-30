@@ -22,7 +22,7 @@ class BooksRepository @Inject constructor(
         if (forceRefresh) observableFromApi ?: observableFromDb
         else observableFromDb.filter {
             it.isNotEmpty()
-        }.switchIfEmpty(observableFromApi)
+        }.switchIfEmpty(observableFromApi ?: Observable.fromArray(emptyList()))
 
     private fun getBooksFromDb(): Observable<List<Book>> = booksDao.getAllBooks()
         .toObservable()

@@ -8,14 +8,15 @@
     <TextView
         android:id="@+id/sectionTitleTextView"
         style="@style/SectionTitle"
-        android:padding="@dimen/default_padding"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="@dimen/default_padding"
         tools:text="A very good title" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/sectionBooksRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:nestedScrollingEnabled="false"
         android:orientation="horizontal" />
 </LinearLayout>
