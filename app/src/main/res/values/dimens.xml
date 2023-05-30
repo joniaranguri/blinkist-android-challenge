@@ -4,6 +4,7 @@
     <dimen name="default_padding">16dp</dimen>
     <dimen name="expanded_toolbar_size">130dp</dimen>
     <dimen name="short_padding">8dp</dimen>
+    <dimen name="inset_splash_size">60dp</dimen>
 
     <dimen name="expanded_toolbar_title_size">28sp</dimen>
     <dimen name="book_title_size">18sp</dimen>
