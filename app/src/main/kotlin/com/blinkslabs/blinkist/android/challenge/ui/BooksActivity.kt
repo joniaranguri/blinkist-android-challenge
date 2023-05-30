@@ -17,6 +17,8 @@ import com.blinkslabs.blinkist.android.challenge.common.ext.BooksArrangement
 import com.blinkslabs.blinkist.android.challenge.common.ext.configureBehaviour
 import com.blinkslabs.blinkist.android.challenge.common.ext.setSelectedColor
 import com.blinkslabs.blinkist.android.challenge.data.model.BookSection
+import com.blinkslabs.blinkist.android.challenge.ui.adapters.BookSectionsRecyclerAdapter
+import com.blinkslabs.blinkist.android.challenge.ui.decorators.RecyclerSectionItemDecoration
 import com.google.android.material.appbar.AppBarLayout
 import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
@@ -63,11 +65,17 @@ class BooksActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedListener 
 
     private fun configureBooksList() {
         recyclerAdapter = BookSectionsRecyclerAdapter()
+        val sectionItemDecoration = RecyclerSectionItemDecoration(
+            resources.getDimensionPixelSize(R.dimen.recycler_section_header_height),
+            recyclerAdapter
+        )
+        recyclerView.addItemDecoration(sectionItemDecoration)
         recyclerView.also {
             it.layoutManager = LinearLayoutManager(this)
             it.adapter = recyclerAdapter
         }
     }
+
 
     private fun configureViews() {
         swipeRefreshLayout.setOnRefreshListener {
@@ -91,6 +99,7 @@ class BooksActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedListener 
     }
 
     private fun showBooks(books: List<BookSection>) {
+        recyclerView.invalidateItemDecorations()
         recyclerAdapter.setItems(books)
     }
 

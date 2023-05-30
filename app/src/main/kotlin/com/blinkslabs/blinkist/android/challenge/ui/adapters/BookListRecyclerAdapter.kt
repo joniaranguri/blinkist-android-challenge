@@ -1,4 +1,4 @@
-package com.blinkslabs.blinkist.android.challenge.ui
+package com.blinkslabs.blinkist.android.challenge.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.View
