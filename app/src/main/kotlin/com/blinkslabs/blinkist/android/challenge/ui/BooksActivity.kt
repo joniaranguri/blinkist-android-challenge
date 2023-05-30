@@ -2,6 +2,8 @@ package com.blinkslabs.blinkist.android.challenge.ui
 
 import android.os.Bundle
 import android.view.Menu
+import android.view.View
+import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -10,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.blinkslabs.blinkist.android.challenge.BlinkistChallengeApplication
 import com.blinkslabs.blinkist.android.challenge.R
+import com.blinkslabs.blinkist.android.challenge.common.NetworkState
 import com.blinkslabs.blinkist.android.challenge.common.ext.BooksArrangement
 import com.blinkslabs.blinkist.android.challenge.common.ext.configureBehaviour
 import com.blinkslabs.blinkist.android.challenge.common.ext.setSelectedColor
@@ -27,6 +30,7 @@ class BooksActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedListener 
     private lateinit var recyclerView: RecyclerView
     private lateinit var swipeRefreshLayout: SwipeRefreshLayout
     private lateinit var appBarLayout: AppBarLayout
+    private lateinit var failedDescriptionTextView: TextView
     private lateinit var recyclerAdapter: BookSectionsRecyclerAdapter
 
     private val subscriptions = CompositeDisposable()
@@ -40,7 +44,7 @@ class BooksActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedListener 
             .component.inject(this)
         configureBooksList()
         configureViews()
-        setUpBooksObserver()
+        setUpObservers()
         viewModel.fetchBooks()
     }
 
@@ -48,6 +52,7 @@ class BooksActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedListener 
         recyclerView = findViewById(R.id.bookSectionsRecyclerView)
         swipeRefreshLayout = findViewById(R.id.swipeRefreshLayout)
         appBarLayout = findViewById(R.id.appBarLayout)
+        failedDescriptionTextView = findViewById(R.id.failedDescriptionText)
     }
 
     private fun configureToolbar() {
@@ -68,27 +73,25 @@ class BooksActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedListener 
         swipeRefreshLayout.setOnRefreshListener {
             viewModel.refreshBooks()
         }
-        showLoading()
     }
 
-    private fun setUpBooksObserver() {
+    private fun setUpObservers() {
         viewModel.books().observe(this) { books ->
             showBooks(books)
-            hideLoading()
         }
-    }
-
-    private fun showLoading() {
-        swipeRefreshLayout.isRefreshing = true
-    }
-
-    private fun hideLoading() {
-        swipeRefreshLayout.isRefreshing = false
+        viewModel.networkState().observe(this) {
+            swipeRefreshLayout.isRefreshing = it == NetworkState.LOADING
+            if (it == NetworkState.ERROR || it == NetworkState.NO_RESULTS) {
+                failedDescriptionTextView.apply {
+                    visibility = View.VISIBLE
+                    text = it.msg
+                }
+            } else failedDescriptionTextView.visibility = View.GONE
+        }
     }
 
     private fun showBooks(books: List<BookSection>) {
         recyclerAdapter.setItems(books)
-        hideLoading()
     }
 
     override fun onOffsetChanged(appBarLayout: AppBarLayout?, i: Int) {
