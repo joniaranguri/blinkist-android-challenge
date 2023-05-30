@@ -17,77 +17,77 @@ class MockBooksApi @Inject constructor() : BooksApi {
                     "Eat, Move, Sleep",
                     "Tom Rath",
                     LocalDate.of(2018, 7, 3),
-                    "https://firebasestorage.googleapis.com/v0/b/joniaranguri-resume.appspot.com/o/code-challenge%2Feat-move-sleep.png?alt=media&token=96223387-d7e1-487f-bbf8-4e0e71389187"
+                    "https://images.blinkist.com/images/books/5694b3802f6827000700002a/1_1/640.jpg"
                 ),
                 Book(
                     "eea5ee1",
                     "The Secret Life of Sleep",
                     "Kat Duff",
                     LocalDate.of(2018, 7, 2),
-                    "https://firebasestorage.googleapis.com/v0/b/joniaranguri-resume.appspot.com/o/code-challenge%2Fthe-secret-life-os.png?alt=media&token=41ec03e5-2489-4aea-b90c-c0c4df4ab93e"
+                    "https://images.blinkist.com/images/books/56c1de12587c820007000063/1_1/640.jpg"
                 ),
                 Book(
                     "7e2401d",
                     "The Sleep Revolution",
                     "Arianna Huffington",
                     LocalDate.of(2018, 6, 19),
-                    "https://firebasestorage.googleapis.com/v0/b/joniaranguri-resume.appspot.com/o/code-challenge%2Fthe-sleep-revolution.png?alt=media&token=781aa1ba-2b76-4669-8125-42b456e0eb39"
+                    "https://images.blinkist.com/images/books/5776159b86883200034f4744/1_1/640.jpg"
                 ),
                 Book(
                     "03779ee",
                     "Real Artists Don’t Starve",
                     "Jeff Goins",
                     LocalDate.of(2017, 12, 31),
-                    "https://firebasestorage.googleapis.com/v0/b/joniaranguri-resume.appspot.com/o/code-challenge%2Freal-artist-dns.png?alt=media&token=0289f5bd-081b-4a21-8593-7cfa8c82d3d2"
+                    "https://images.blinkist.com/images/books/599817dbb238e10006a125cb/1_1/640.jpg"
                 ),
                 Book(
                     "e021f6c",
                     "Hirntuning",
                     "Dave Asprey",
                     LocalDate.of(2018, 1, 1),
-                    "https://firebasestorage.googleapis.com/v0/b/joniaranguri-resume.appspot.com/o/code-challenge%2Fhirn-tunning.png?alt=media&token=e9da89c5-35ad-4d86-9d33-2119f89a6552"
+                    "https://images.blinkist.com/images/books/5b284d46b238e1000787b43d/1_1/640.jpg"
                 ),
                 Book(
                     "8722651",
                     "The Red Queen",
                     "Matt Ridley",
                     LocalDate.of(2018, 6, 17),
-                    "https://firebasestorage.googleapis.com/v0/b/joniaranguri-resume.appspot.com/o/code-challenge%2Fthe-red-queen.png?alt=media&token=be10f422-6f30-4965-8db2-67fec73d12f0"
+                    "https://images.blinkist.com/images/books/58eb3b45a54bbb000464bab8/1_1/640.jpg"
                 ),
                 Book(
                     "2cb8609",
                     "Inner Engineering",
                     "Sadhguru Jaggi Vasudev",
                     LocalDate.of(2018, 6, 18),
-                    "https://firebasestorage.googleapis.com/v0/b/joniaranguri-resume.appspot.com/o/code-challenge%2Finner-engineering.png?alt=media&token=92c4b165-014a-4577-adb1-24131d6e397b"
+                    "https://images.blinkist.com/images/books/59751e00b238e100057032bf/1_1/640.jpg"
                 ),
                 Book(
                     "b4388e4",
                     "Feathers",
                     "Thor Hanson",
                     LocalDate.of(2018, 6, 18),
-                    "https://firebasestorage.googleapis.com/v0/b/joniaranguri-resume.appspot.com/o/code-challenge%2Ffeathers.png?alt=media&token=120fe166-e6e7-43d4-bba7-c00ea2d31902"
+                    "https://images.blinkist.com/images/books/59773cc1b238e10005084241/1_1/640.jpg"
                 ),
                 Book(
                     "1cdb347",
                     "The Subtle Art of Not Giving a F*ck",
                     "Mark Manson",
                     LocalDate.of(2016, 7, 2),
-                    "https://firebasestorage.googleapis.com/v0/b/joniaranguri-resume.appspot.com/o/code-challenge%2Fthe-subtle-art-of-ngaf.png?alt=media&token=a2ff2e8a-0e77-4c31-85ec-df5115c56076"
+                    "https://images.blinkist.com/images/books/592933bbb238e10007b6b0a5/1_1/640.jpg"
                 ),
                 Book(
                     "a597717",
                     "Bringing Up Bébé",
                     "Pamela Druckerman",
                     LocalDate.of(2016, 7, 3),
-                    "https://firebasestorage.googleapis.com/v0/b/joniaranguri-resume.appspot.com/o/code-challenge%2Fbringing-up-bebe.png?alt=media&token=fe578bd3-630a-4b6d-bec6-9db50199062a"
+                    "https://images.blinkist.com/images/books/57e6c3f0afd7bf0003b7052d/1_1/640.jpg"
                 ),
                 Book(
                     "99c1c39",
                     "A Book With a Very Long Title, Veeeeeeeeeeeeeeeeery Long, Possibly the Most Long Title For a Book You've Ever Seen In Your Entire Life",
                     "The Blinkist Android Team",
                     LocalDate.of(2014, 1, 1),
-                    "https://firebasestorage.googleapis.com/v0/b/joniaranguri-resume.appspot.com/o/code-challenge%2Fthe-entrepreneur-rc.png?alt=media&token=894d2667-cc75-4c4c-868b-02bca1570745"
+                    "https://images.blinkist.com/images/books/5575979e3935610007420000/1_1/640.jpg"
                 )
             )
         ).delay(2000, TimeUnit.MILLISECONDS)
