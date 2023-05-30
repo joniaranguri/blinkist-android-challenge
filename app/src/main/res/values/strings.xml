@@ -2,4 +2,6 @@
     <string name="app_name">Blinkist Code Challenge</string>
     <string name="published_books_title">Published books</string>
     <string name="error_generic">Uh-oh. An error has occurred. Please try again.</string>
+    <string name="alphabetical_order">Sort alphabetically</string>
+    <string name="week_order">Sort by week</string>
 </resources>

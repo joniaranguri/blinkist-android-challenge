@@ -3,7 +3,8 @@ package com.blinkslabs.blinkist.android.challenge.ui
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.blinkslabs.blinkist.android.challenge.common.ext.getWeekRange
+import com.blinkslabs.blinkist.android.challenge.common.ext.BooksArrangement
+import com.blinkslabs.blinkist.android.challenge.common.ext.applyArrangement
 import com.blinkslabs.blinkist.android.challenge.data.BooksRepository
 import com.blinkslabs.blinkist.android.challenge.data.model.Book
 import com.blinkslabs.blinkist.android.challenge.data.model.BookSection
@@ -17,6 +18,7 @@ import javax.inject.Inject
 class BooksViewModel @Inject constructor(private val booksRepository: BooksRepository) :
     ViewModel() {
 
+    private var booksArrangement = BooksArrangement.WEEKLY
     private val subscriptions = CompositeDisposable()
 
     private val books = MutableLiveData<List<BookSection>>()
@@ -43,13 +45,13 @@ class BooksViewModel @Inject constructor(private val booksRepository: BooksRepos
     }
 
     private val sortAndUpdateBooks: (t: List<Book>) -> Unit = {
-        books.postValue(it.timeArrangement())
+        books.postValue(it.applyArrangement(booksArrangement))
     }
 
-    fun List<Book>.timeArrangement(): List<BookSection> {
-        return this
-            .groupBy { it.publishDate.getWeekRange() }
-            .map { BookSection(it.key, it.value) }
+    fun updateArrangement(newBooksArrangement: BooksArrangement) {
+        booksArrangement = newBooksArrangement
+        val notSortedBookList = books.value?.flatMap { it.books } ?: emptyList()
+        sortAndUpdateBooks.invoke(notSortedBookList)
     }
 
     override fun onCleared() {
