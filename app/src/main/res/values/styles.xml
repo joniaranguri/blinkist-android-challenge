@@ -1,5 +1,10 @@
 <resources>
 
+    <style name="Theme.App.Starting" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenAnimatedIcon">@drawable/splash_inset_logo</item>
+        <item name="postSplashScreenTheme">@style/AppTheme</item>
+    </style>
+
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimaryDark</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
