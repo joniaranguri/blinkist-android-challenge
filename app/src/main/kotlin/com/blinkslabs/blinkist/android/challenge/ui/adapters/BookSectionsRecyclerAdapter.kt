@@ -1,17 +1,18 @@
-package com.blinkslabs.blinkist.android.challenge.ui
+package com.blinkslabs.blinkist.android.challenge.ui.adapters
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.RecycledViewPool
 import com.blinkslabs.blinkist.android.challenge.R
 import com.blinkslabs.blinkist.android.challenge.data.model.BookSection
+import com.blinkslabs.blinkist.android.challenge.ui.decorators.StickyHeaderSectionCallback
 
-class BookSectionsRecyclerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class BookSectionsRecyclerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(),
+    StickyHeaderSectionCallback {
 
     private val items = ArrayList<BookSection>()
     private val viewPool = RecycledViewPool()
@@ -24,9 +25,6 @@ class BookSectionsRecyclerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val bookHolder = holder as BookSectionViewHolder
         val bookSection = items[position]
-
-        bookHolder.sectionTitleTextView.text = bookSection.sectionTitle
-
         with(bookHolder.sectionBooksRecyclerView) {
             layoutManager = LinearLayoutManager(
                 holder.sectionBooksRecyclerView.context,
@@ -48,7 +46,14 @@ class BookSectionsRecyclerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder
     }
 
     private class BookSectionViewHolder(v: View) : RecyclerView.ViewHolder(v) {
-        var sectionTitleTextView: TextView = v.findViewById(R.id.sectionTitleTextView)
         var sectionBooksRecyclerView: RecyclerView = v.findViewById(R.id.sectionBooksRecyclerView)
+    }
+
+    override fun isSection(position: Int): Boolean {
+        return (position == 0 || this.items[position].sectionTitle != this.items[position - 1].sectionTitle)
+    }
+
+    override fun getSectionHeader(position: Int): CharSequence {
+        return this.items[position].sectionTitle
     }
 }
