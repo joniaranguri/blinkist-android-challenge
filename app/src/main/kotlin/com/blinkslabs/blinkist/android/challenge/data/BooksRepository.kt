@@ -27,7 +27,7 @@ class BooksRepository @Inject constructor(
     private fun getBooksFromDb(): Observable<List<Book>> = booksDao.getAllBooks()
         .toObservable()
         .doOnNext {
-            Timber.tag("*** REPOSITORY DB *** ").e(it.size.toString())
+            Timber.i("Getting %s elements from DB", it.size.toString())
         }
 
     private fun getBooksFromAPI(): Observable<List<Book>>? =
@@ -35,7 +35,7 @@ class BooksRepository @Inject constructor(
         else Observable.defer {
             booksApi.getAllBooks().toObservable()
         }.doOnNext {
-            Timber.tag("*** REPOSITORY API *** ").e(it.size.toString())
+            Timber.i("Getting %s elements from server", it.size.toString())
             booksDao.saveAllBooks(it)
         }
 }

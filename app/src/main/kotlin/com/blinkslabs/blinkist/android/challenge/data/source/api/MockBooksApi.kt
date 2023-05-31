@@ -4,13 +4,14 @@ import com.blinkslabs.blinkist.android.challenge.data.model.Book
 import io.reactivex.Observable
 import io.reactivex.Single
 import org.threeten.bp.LocalDate
+import timber.log.Timber
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 class MockBooksApi @Inject constructor() : BooksApi {
 
     override fun getAllBooks(): Single<List<Book>> {
-    println("AAAAAAAAAAA SE EJECUTOOOOOOO")
+        Timber.i("Making API call..")
         return Single.just(
             listOf(
                 Book(
