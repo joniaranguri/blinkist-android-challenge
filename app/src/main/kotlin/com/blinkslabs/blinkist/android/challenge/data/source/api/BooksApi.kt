@@ -1,9 +1,9 @@
 package com.blinkslabs.blinkist.android.challenge.data.source.api
 
 import com.blinkslabs.blinkist.android.challenge.data.model.Book
-import io.reactivex.Observable
+import io.reactivex.Single
 
 interface BooksApi {
 
-    fun getAllBooks(): Observable<List<Book>>
+    fun getAllBooks(): Single<List<Book>>
 }

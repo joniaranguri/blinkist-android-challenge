@@ -15,14 +15,14 @@ class BooksRepository @Inject constructor(
 ) {
 
     fun getBooks(
-        forceRefresh: Boolean,
-        observableFromApi: Observable<List<Book>>? = getBooksFromAPI(),
-        observableFromDb: Observable<List<Book>> = getBooksFromDb()
-    ): Observable<List<Book>> =
-        if (forceRefresh) observableFromApi ?: observableFromDb
+        forceRefresh: Boolean = false
+    ): Observable<List<Book>> {
+        val observableFromDb = getBooksFromDb()
+        return if (forceRefresh) getBooksFromAPI() ?: observableFromDb
         else observableFromDb.filter {
             it.isNotEmpty()
-        }.switchIfEmpty(observableFromApi ?: Observable.fromArray(emptyList()))
+        }.switchIfEmpty(getBooksFromAPI() ?: Observable.fromArray(emptyList()))
+    }
 
     private fun getBooksFromDb(): Observable<List<Book>> = booksDao.getAllBooks()
         .toObservable()
@@ -32,9 +32,10 @@ class BooksRepository @Inject constructor(
 
     private fun getBooksFromAPI(): Observable<List<Book>>? =
         if (!networkStatus.isNetworkAvailable()) null
-        else booksApi.getAllBooks()
-            .doOnNext {
-                Timber.tag("*** REPOSITORY API *** ").e(it.size.toString())
-                booksDao.saveAllBooks(it)
-            }
+        else Observable.defer {
+            booksApi.getAllBooks().toObservable()
+        }.doOnNext {
+            Timber.tag("*** REPOSITORY API *** ").e(it.size.toString())
+            booksDao.saveAllBooks(it)
+        }
 }
