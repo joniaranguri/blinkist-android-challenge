@@ -9,7 +9,9 @@
     <dimen name="expanded_toolbar_title_size">28sp</dimen>
     <dimen name="book_title_size">18sp</dimen>
     <dimen name="section_title_size">20sp</dimen>
-    <dimen name="books_cover_image_size">150dp</dimen>
-    <dimen name="book_item_width">182dp</dimen>
+    <dimen name="books_cover_image_size">180dp</dimen>
+    <dimen name="book_item_width">212dp</dimen>
     <dimen name="recycler_section_header_height">40dp</dimen>
+    <dimen name="card_image_radius">5dp</dimen>
+    <dimen name="card_image_elevation">0dp</dimen>
 </resources>

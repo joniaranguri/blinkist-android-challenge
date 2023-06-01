@@ -75,6 +75,11 @@ dependencies {
     implementation "io.reactivex.rxjava2:rxjava:$rxjava_version"
     implementation "io.reactivex.rxjava2:rxandroid:$rxandroid_version"
 
+    //Retrofit
+    implementation "com.squareup.retrofit2:retrofit:${retrofit_version}"
+    implementation "com.squareup.retrofit2:converter-moshi:${moshi_converter_version}"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:${rxjava_adapterVersion}"
+
     // Testing
     testImplementation "junit:junit:$junit_version"
     testImplementation "androidx.arch.core:core-testing:$arch_testing_version"

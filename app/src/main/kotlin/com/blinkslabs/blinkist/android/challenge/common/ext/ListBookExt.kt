@@ -8,14 +8,14 @@ fun List<Book>.applyArrangement(booksArrangement: BooksArrangement): List<BookSe
 
 fun List<Book>.timeArrangement(): List<BookSection> {
     return this
-        .groupBy { it.publishDate.getWeekRange() }
+        .groupBy { it.publishedAt.getWeekRange() }
         .map { BookSection(it.key, it.value) }
-        .sortedByDescending { it.books.first().publishDate }
+        .sortedByDescending { it.books.first().publishedAt }
 }
 
 fun List<Book>.alphabeticalArrangement(): List<BookSection> {
     return this
-        .groupBy { it.name.first() }
+        .groupBy { it.title.first() }
         .map { BookSection(it.key.toString(), it.value) }
         .sortedBy { it.sectionTitle }
 }
