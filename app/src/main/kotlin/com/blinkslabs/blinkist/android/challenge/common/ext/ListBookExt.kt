@@ -10,12 +10,12 @@ fun List<Book>.timeArrangement(): List<BookSection> {
     return this
         .groupBy { it.publishDate.getWeekRange() }
         .map { BookSection(it.key, it.value) }
-        .sortedByDescending { it.books[0].publishDate }
+        .sortedByDescending { it.books.first().publishDate }
 }
 
 fun List<Book>.alphabeticalArrangement(): List<BookSection> {
     return this
-        .groupBy { it.name[0] }
+        .groupBy { it.name.first() }
         .map { BookSection(it.key.toString(), it.value) }
         .sortedBy { it.sectionTitle }
 }

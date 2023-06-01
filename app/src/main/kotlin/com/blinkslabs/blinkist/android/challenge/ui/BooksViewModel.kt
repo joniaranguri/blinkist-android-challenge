@@ -1,10 +1,10 @@
 package com.blinkslabs.blinkist.android.challenge.ui
 
+import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.blinkslabs.blinkist.android.challenge.common.NetworkState
-import com.blinkslabs.blinkist.android.challenge.common.Status
 import com.blinkslabs.blinkist.android.challenge.common.ext.BooksArrangement
 import com.blinkslabs.blinkist.android.challenge.common.ext.applyArrangement
 import com.blinkslabs.blinkist.android.challenge.data.BooksRepository
@@ -20,7 +20,9 @@ import javax.inject.Inject
 class BooksViewModel @Inject constructor(private val booksRepository: BooksRepository) :
     ViewModel() {
 
-    private var booksArrangement = BooksArrangement.WEEKLY
+    @VisibleForTesting
+    var booksArrangement = BooksArrangement.WEEKLY
+
     private val subscriptions = CompositeDisposable()
 
     private val books = MutableLiveData<List<BookSection>>()
@@ -48,8 +50,8 @@ class BooksViewModel @Inject constructor(private val booksRepository: BooksRepos
                         NetworkState.NO_RESULTS
                     )
                     else {
-                        sortAndUpdateBooks(it)
                         networkState.postValue(NetworkState.LOADED)
+                        sortAndUpdateBooks(it)
                     }
                 }
 
