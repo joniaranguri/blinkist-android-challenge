@@ -10,7 +10,7 @@ import io.reactivex.Single
 @Dao
 interface BooksDao {
 
-    @Query("SELECT * FROM books ORDER BY publishDate DESC")
+    @Query("SELECT * FROM books ORDER BY publishedAt DESC")
     fun getAllBooks(): Single<List<Book>>
 
     @Insert(

@@ -15,6 +15,7 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import timber.log.Timber
+import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 class BooksViewModel @Inject constructor(private val booksRepository: BooksRepository) :
@@ -44,6 +45,7 @@ class BooksViewModel @Inject constructor(private val booksRepository: BooksRepos
         return booksRepository.getBooks(forceRefresh)
             .subscribeOn(Schedulers.newThread())
             .observeOn(AndroidSchedulers.mainThread())
+            .timeout(REQUEST_TIMEOUT_SECONDS, TimeUnit.SECONDS)
             .subscribe(
                 {
                     if (it.isEmpty()) networkState.postValue(
@@ -58,6 +60,7 @@ class BooksViewModel @Inject constructor(private val booksRepository: BooksRepos
             ) {
                 Timber.e(it, "while loading data")
                 networkState.postValue(NetworkState.ERROR)
+                books.postValue(emptyList())
             }
     }
 
@@ -73,5 +76,9 @@ class BooksViewModel @Inject constructor(private val booksRepository: BooksRepos
 
     override fun onCleared() {
         subscriptions.clear()
+    }
+
+    companion object {
+        const val REQUEST_TIMEOUT_SECONDS = 15L
     }
 }

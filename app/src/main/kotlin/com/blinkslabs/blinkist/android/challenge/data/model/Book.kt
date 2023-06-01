@@ -15,17 +15,17 @@ data class Book(
     @ColumnInfo(name = "id")
     val id: String,
 
-    @Json(name = "name")
-    @ColumnInfo(name = "name")
-    val name: String,
+    @Json(name = "title")
+    @ColumnInfo(name = "title")
+    val title: String,
 
     @Json(name = "author")
     @ColumnInfo(name = "author")
     val author: String,
 
-    @Json(name = "publishDate")
-    @ColumnInfo(name = "publishDate")
-    val publishDate: LocalDate,
+    @Json(name = "publishedAt")
+    @ColumnInfo(name = "publishedAt")
+    val publishedAt: LocalDate,
 
     @Json(name = "coverImageUrl")
     @ColumnInfo(name = "coverImageUrl")
