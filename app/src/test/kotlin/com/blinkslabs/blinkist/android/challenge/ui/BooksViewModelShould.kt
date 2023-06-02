@@ -24,7 +24,6 @@ import org.mockito.Mock
 import org.mockito.junit.MockitoJUnitRunner
 import org.threeten.bp.LocalDate
 
-
 @RunWith(MockitoJUnitRunner::class)
 class BooksViewModelShould {
 
@@ -58,7 +57,7 @@ class BooksViewModelShould {
 
     @Test
     fun `Call getBooks() on Repository when fetchBooks() is called and not refresh`() {
-        givenASuccessfulBooksRepositoryCall(mockBooks)
+        givenASuccessfulBooksRepositoryCall()
 
         viewModel.fetchBooks()
 
@@ -67,7 +66,7 @@ class BooksViewModelShould {
 
     @Test
     fun `Call getBooks() on Repository when fetchBooks() is called and is refreshing`() {
-        givenASuccessfulBooksRepositoryCall(mockBooks)
+        givenASuccessfulBooksRepositoryCall()
         val forceRefresh = true
 
         viewModel.fetchBooks(forceRefresh)
@@ -77,7 +76,7 @@ class BooksViewModelShould {
 
     @Test
     fun `Show books on view when fetchBooks() is successful and arrangement is by week`() {
-        givenASuccessfulBooksRepositoryCall(mockBooks)
+        givenASuccessfulBooksRepositoryCall()
 
         viewModel.fetchBooks()
 
@@ -86,7 +85,7 @@ class BooksViewModelShould {
 
     @Test
     fun `Show books on view when fetchBooks() is successful and arrangement is by letter`() {
-        givenASuccessfulBooksRepositoryCall(mockBooks)
+        givenASuccessfulBooksRepositoryCall()
         viewModel.booksArrangement = BooksArrangement.ALPHABETICALLY
 
         viewModel.fetchBooks()
@@ -96,7 +95,7 @@ class BooksViewModelShould {
 
     @Test
     fun `Call fetchBooks() with forceRefresh flag when refreshBooks()`() {
-        givenASuccessfulBooksRepositoryCall(mockBooks)
+        givenASuccessfulBooksRepositoryCall()
         val spiedViewModel = spy(viewModel)
 
         spiedViewModel.refreshBooks()
@@ -106,7 +105,7 @@ class BooksViewModelShould {
 
     @Test
     fun `Update books on view when updateArrangement()`() {
-        givenASuccessfulBooksRepositoryCall(mockBooks)
+        givenASuccessfulBooksRepositoryCall()
         viewModel.fetchBooks()
         assertEquals(mockBookSectionWeekList, viewModel.books().getOrAwaitValue())
 
@@ -115,7 +114,7 @@ class BooksViewModelShould {
         assertEquals(mockBookSectionWordList, viewModel.books().getOrAwaitValue())
     }
 
-    private fun givenASuccessfulBooksRepositoryCall(result: List<Book>) {
-        whenever(booksRepository.getBooks(any())).thenReturn(Observable.just(result))
+    private fun givenASuccessfulBooksRepositoryCall() {
+        whenever(booksRepository.getBooks(any())).thenReturn(Observable.just(mockBooks))
     }
 }

@@ -8,7 +8,6 @@ import org.junit.Test
 import org.threeten.bp.LocalDate
 import java.util.Locale
 
-
 class ListBookExtKtTest {
     private lateinit var firstBook: Book
     private lateinit var secondBook: Book
