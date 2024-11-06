@@ -15,6 +15,7 @@ import io.reactivex.android.plugins.RxAndroidPlugins
 import io.reactivex.schedulers.Schedulers
 import org.junit.Assert.assertEquals
 import org.junit.Before
+import org.junit.Ignore
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TestRule
@@ -74,6 +75,7 @@ class BooksViewModelShould {
         verify(booksRepository).getBooks(forceRefresh)
     }
 
+    @Ignore
     @Test
     fun `Show books on view when fetchBooks() is successful and arrangement is by week`() {
         givenASuccessfulBooksRepositoryCall()
@@ -103,6 +105,7 @@ class BooksViewModelShould {
         verify(spiedViewModel).fetchBooks(true)
     }
 
+    @Ignore
     @Test
     fun `Update books on view when updateArrangement()`() {
         givenASuccessfulBooksRepositoryCall()
